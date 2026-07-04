@@ -5,7 +5,8 @@ import random
 @pytest.fixture
 def driver():
     driver = webdriver.Chrome()
-    return driver
+    yield driver
+    driver.quit()
 
 @pytest.fixture
 def random_email():

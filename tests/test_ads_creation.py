@@ -19,8 +19,6 @@ class TestAdsCreation:
     #Проверить: отображается модальное окно с заголовком «Чтобы разместить объявление, авторизуйтесь».
         assert driver.find_element(*POPUP_LOGIN_HEADER).text == 'Чтобы разместить объявление, авторизуйтесь'
 
-        driver.quit()
-
     #Создание объявления авторизованным пользователем
     @pytest.mark.parametrize("city, category, condition", [
         ("Москва", "Технологии", "Новый"),
@@ -101,5 +99,3 @@ class TestAdsCreation:
             and driver.find_element(*AD_NAME).text == name
             and driver.find_element(*AD_PRICE).text.replace(" ", "") == str(price)+'₽'
         )
-
-        driver.quit()

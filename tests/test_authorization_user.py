@@ -1,7 +1,6 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
-import pytest
 from locators import *
 
 class TestAuthorization:
@@ -47,8 +46,6 @@ class TestAuthorization:
     #Проверить: произошёл переход на главную страницу, в правом верхнем углу отображается аватар пользователя и имя User.
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(PROFILE_BUTTON))
         assert driver.find_element(*USERNAME).text == 'User.'
-        
-        driver.quit()
 
 
     #Logout пользователя
@@ -106,5 +103,3 @@ class TestAuthorization:
         assert (len(is_visible_profile) == 0
                 and len(is_visible_username) == 0
                 and len(is_visible_login_button) == 1)
-
-        driver.quit()

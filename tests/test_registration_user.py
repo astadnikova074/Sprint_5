@@ -33,7 +33,6 @@ class TestRegistration:
     #Проверить: произошёл переход на главную страницу, отображается аватар пользователя и имя User.
         WebDriverWait(driver, 3).until(expected_conditions.visibility_of_element_located(PROFILE_BUTTON))
         assert driver.find_element(*USERNAME).text == 'User.'
-        driver.quit()
 
     #Регистрация пользователя c email не по маске  *******@*******.***
     @pytest.mark.parametrize("email", ['test.ru','test@test'])
@@ -67,7 +66,6 @@ class TestRegistration:
             and ERROR_INPUT_CLASS == driver.find_element(*SUBMIT_PASSWORD_PARENT).get_attribute("class") 
             and email_error_text == 'Ошибка'
         )
-        driver.quit()
 
     #Регистрация уже существующего пользователя
     def test_registration_with_existing_email_shows_error(self, driver, random_email, test_password = 'Test1234'):
@@ -121,5 +119,3 @@ class TestRegistration:
             and ERROR_INPUT_CLASS == driver.find_element(*SUBMIT_PASSWORD_PARENT).get_attribute("class") 
             and email_error_text == 'Ошибка'
         )
-
-        driver.quit()
